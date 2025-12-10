@@ -286,6 +286,7 @@
             const quantity = safeParseFloat('quantity');
             const singleCardPrice = safeParseFloat('itemPrice');
             const singleCardCOGS = safeParseFloat('costOfGoods');
+            const marketingCostPercentInput = safeParseFloat('marketingCost'); // MUST BE HERE
 
             // Get Discount Rates from Inputs
             const discount2Card = safeParseFloat('discount2Card') / 100;
@@ -365,7 +366,7 @@
             // INSERT THE MARKETING COST CALCULATION HERE
             // --- NEW CODE START ---
             // Calculate the actual dollar amount of the marketing cost
-            const marketingCostRate = marketingCostPercentInput / 100; // Converts 2.00 to 0.02
+            const marketingCostRate = marketingCostPercentInput / 100; // Now safe to use
             const marketingCostAmount = totalSale * marketingCostRate;
             // --- NEW CODE END ---
 
