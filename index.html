@@ -354,12 +354,22 @@
             const itemPriceAfterDiscount = subtotal * discountMultiplier;
             const discountAmount = subtotal * discountRate;
 
+            // Existing Code:
             // 3. Calculate Total Sale Amount (A)
             const totalSale = itemPriceAfterDiscount + shippingCharged; // This is the total revenue received
 
             // 4. Calculate Platform Fees with TRS Discount
             const variableFee = totalSale * (feePercent / 100);
             let trsDiscount = 0;
+
+            // INSERT THE MARKETING COST CALCULATION HERE
+            // --- NEW CODE START ---
+            // Calculate the actual dollar amount of the marketing cost
+            const marketingCostRate = marketingCostPercentInput / 100; // Converts 2.00 to 0.02
+            const marketingCostAmount = totalSale * marketingCostRate;
+            // --- NEW CODE END ---
+
+            // ... continue with the rest of the fee calculation ...
 
             if (trsEnabled) {
                 // Apply TRS discount to the variable fee portion
