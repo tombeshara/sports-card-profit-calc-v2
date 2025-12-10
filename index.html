@@ -1,419 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Card Profit Calculator (Bulk Discounts)</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f9fb;
-        }
-        .input-group input:focus {
-            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
-            border-color: #4299e1;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Card Profit Calculator (Bulk Discounts)</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .input-group input:focus {
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+            border-color: #4299e1;
+        }
+    </style>
 </head>
 <body class="p-4 sm:p-8">
 
-    <div class="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6 md:p-10">
-        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-6 border-b pb-3">
-            Sports Card Profit Calculator (Custom Tiered Discounts)
-        </h1>
-        <p class="text-gray-600 mb-8">
-            Enter the details for a **single card** and the **quantity ordered**, then set your desired discount for each bulk tier.
-        </p>
+    <div class="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6 md:p-10">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-6 border-b pb-3">
+            Sports Card Profit Calculator (Custom Tiered Discounts)
+        </h1>
+        <p class="text-gray-600 mb-8">
+            Enter the details for a **single card** and the **quantity ordered**, then set your desired discount for each bulk tier.
+        </p>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-            <!-- INPUTS COLUMN -->
-            <div class="lg:col-span-2 space-y-5">
-                <h2 class="text-xl font-bold text-indigo-600 mb-4 border-b pb-2">Order & Card Details</h2>
+                        <div class="lg:col-span-2 space-y-5">
+                <h2 class="text-xl font-bold text-indigo-600 mb-4 border-b pb-2">Order & Card Details</h2>
 
-                <!-- Input Group: Quantity -->
-                <div class="input-group">
-                    <label for="quantity" class="block text-sm font-medium text-gray-700">Number of Cards Sold (Quantity)</label>
-                    <input type="number" id="quantity" value="10" min="1" step="1" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                    <p class="text-xs text-gray-500 mt-1 font-semibold text-blue-700">
-                        The discount below will be applied based on the quantity entered.
-                    </p>
-                </div>
+                                <div class="input-group">
+                    <label for="quantity" class="block text-sm font-medium text-gray-700">Number of Cards Sold (Quantity)</label>
+                    <input type="number" id="quantity" value="10" min="1" step="1" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                    <p class="text-xs text-gray-500 mt-1 font-semibold text-blue-700">
+                        The discount below will be applied based on the quantity entered.
+                    </p>
+                </div>
 
-                <!-- Input Group: Single Card Price -->
-                <div class="input-group">
-                    <label for="itemPrice" class="block text-sm font-medium text-gray-700">Single Card Price (Pre-Discount, \$)</label>
-                    <input type="number" id="itemPrice" value="5.00" min="0" step="0.01" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                </div>
+                                <div class="input-group">
+                    <label for="itemPrice" class="block text-sm font-medium text-gray-700">Single Card Price (Pre-Discount, \$)</label>
+                    <input type="number" id="itemPrice" value="5.00" min="0" step="0.01" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
 
-                <!-- Input Group: Single Card COGS -->
-                <div class="input-group">
-                    <label for="costOfGoods" class="block text-sm font-medium text-gray-700">Single Card Cost of Goods Sold (COGS, \$)</label>
-                    <input type="number" id="costOfGoods" value="1.50" min="0" step="0.01" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                </div>
+                                <div class="input-group">
+                    <label for="costOfGoods" class="block text-sm font-medium text-gray-700">Single Card Cost of Goods Sold (COGS, \$)</label>
+                    <input type="number" id="costOfGoods" value="1.50" min="0" step="0.01" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
 
-                <hr class="my-6 border-indigo-200">
-                <h2 class="text-xl font-bold text-indigo-600 mb-4 border-b pb-2">Tiered Discount Settings (in %)</h2>
-                
-                <div class="grid grid-cols-2 gap-4">
-                    <!-- Input Group: 2 Cards Discount -->
-                    <div class="input-group">
-                        <label for="discount2Card" class="block text-sm font-medium text-gray-700">2 Cards Discount (%)</label>
-                        <input type="number" id="discount2Card" value="10" min="0" max="100" step="1" oninput="calculateProfit()"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                    </div>
+                <hr class="my-6 border-indigo-200">
+                <h2 class="text-xl font-bold text-indigo-600 mb-4 border-b pb-2">Tiered Discount Settings (in %)</h2>
+                
+                <div class="grid grid-cols-2 gap-4">
+                                        <div class="input-group">
+                        <label for="discount2Card" class="block text-sm font-medium text-gray-700">2 Cards Discount (%)</label>
+                        <input type="number" id="discount2Card" value="10" min="0" max="100" step="1" oninput="calculateProfit()"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                    </div>
 
-                    <!-- Input Group: 3 Cards Discount -->
-                    <div class="input-group">
-                        <label for="discount3Card" class="block text-sm font-medium text-gray-700">3 Cards Discount (%)</label>
-                        <input type="number" id="discount3Card" value="20" min="0" max="100" step="1" oninput="calculateProfit()"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                    </div>
+                                        <div class="input-group">
+                        <label for="discount3Card" class="block text-sm font-medium text-gray-700">3 Cards Discount (%)</label>
+                        <input type="number" id="discount3Card" value="20" min="0" max="100" step="1" oninput="calculateProfit()"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                    </div>
 
-                    <!-- Input Group: 4 Cards Discount -->
-                    <div class="input-group">
-                        <label for="discount4Card" class="block text-sm font-medium text-gray-700">4 Cards Discount (%)</label>
-                        <input type="number" id="discount4Card" value="30" min="0" max="100" step="1" oninput="calculateProfit()"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                    </div>
+                                        <div class="input-group">
+                        <label for="discount4Card" class="block text-sm font-medium text-gray-700">4 Cards Discount (%)</label>
+                        <input type="number" id="discount4Card" value="30" min="0" max="100" step="1" oninput="calculateProfit()"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                    </div>
 
-                    <!-- Input Group: 5+ Cards Discount -->
-                    <div class="input-group">
-                        <label for="discount5PlusCard" class="block text-sm font-medium text-gray-700">5+ Cards Discount (%)</label>
-                        <input type="number" id="discount5PlusCard" value="50" min="0" max="100" step="1" oninput="calculateProfit()"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                    </div>
-                </div>
+                                        <div class="input-group">
+                        <label for="discount5PlusCard" class="block text-sm font-medium text-gray-700">5+ Cards Discount (%)</label>
+                        <input type="number" id="discount5PlusCard" value="50" min="0" max="100" step="1" oninput="calculateProfit()"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                    </div>
+                </div>
 
 
-                <hr class="my-6 border-indigo-200">
-                <h2 class="text-xl font-bold text-indigo-600 mb-4 border-b pb-2">Order-Level Costs</h2>
+                <hr class="my-6 border-indigo-200">
+                <h2 class="text-xl font-bold text-indigo-600 mb-4 border-b pb-2">Order-Level Costs</h2>
 
-                <!-- Input Group: Shipping Charged to Buyer -->
-                <div class="input-group">
-                    <label for="shippingCharged" class="block text-sm font-medium text-gray-700">Shipping Charged to Buyer (\$)</label>
-                    <input type="number" id="shippingCharged" value="5.00" min="0" step="0.01" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                </div>
+                                <div class="input-group">
+                    <label for="shippingCharged" class="block text-sm font-medium text-gray-700">Shipping Charged to Buyer (\$)</label>
+                    <input type="number" id="shippingCharged" value="5.00" min="0" step="0.01" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
 
-                <!-- Input Group: Actual Shipping Cost -->
-                <div class="input-group">
-                    <label for="shippingCost" class="block text-sm font-medium text-gray-700">Actual Shipping Cost You Pay (\$)</label>
-                    <input type="number" id="shippingCost" value="5.50" min="0" step="0.01" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                </div>
-                
-                <!-- Input Group: Packaging Cost -->
-                <div class="input-group">
-                    <label for="packagingCost" class="block text-sm font-medium text-gray-700">Packaging/Envelope Cost (Per Order, \$)</label>
-                    <input type="number" id="packagingCost" value="0.15" min="0" step="0.01" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                </div>
-                
-                <!-- Input Group: Marketing Cost -->
-                <div class="input-group">
-                    <label for="marketingCost" class="block text-sm font-medium text-gray-700">Per-Order Marketing/Ad Cost (CPA) (\$)</label>
-                    <input type="number" id="marketingCost" value="1.50" min="0" step="0.01" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                </div>
+                                <div class="input-group">
+                    <label for="shippingCost" class="block text-sm font-medium text-gray-700">Actual Shipping Cost You Pay (\$)</label>
+                    <input type="number" id="shippingCost" value="5.50" min="0" step="0.01" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
+                
+                                <div class="input-group">
+                    <label for="packagingCost" class="block text-sm font-medium text-gray-700">Packaging/Envelope Cost (Per Order, \$)</label>
+                    <input type="number" id="packagingCost" value="0.15" min="0" step="0.01" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
+                
+                                <div class="input-group">
+                    <label for="marketingCostPercent" class="block text-sm font-medium text-gray-700">Per-Order Marketing/Ad Cost (CPA) (%)</label>
+                    <input type="number" id="marketingCostPercent" value="3.00" min="0" max="100" step="0.01" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
 
-                <hr class="my-6 border-indigo-200">
+                <hr class="my-6 border-indigo-200">
 
-                <h2 class="text-xl font-bold text-indigo-600 mb-4 border-b pb-2">Inputs (Platform Fees & Overhead)</h2>
-                
-                <!-- Input Group: Fee Percentage -->
-                <div class="input-group">
-                    <label for="feePercent" class="block text-sm font-medium text-gray-700">Final Value Fee Percentage (%)</label>
-                    <input type="number" id="feePercent" value="13.6" min="0" max="100" step="0.1" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                    <p class="text-xs text-gray-500 mt-1">e.g., enter 13.6 for 13.6%.</p>
-                </div>
+                <h2 class="text-xl font-bold text-indigo-600 mb-4 border-b pb-2">Inputs (Platform Fees & Overhead)</h2>
+                
+                                <div class="input-group">
+                    <label for="feePercent" class="block text-sm font-medium text-gray-700">Final Value Fee Percentage (%)</label>
+                    <input type="number" id="feePercent" value="13.6" min="0" max="100" step="0.1" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                    <p class="text-xs text-gray-500 mt-1">e.g., enter 13.6 for 13.6%.</p>
+                </div>
 
-                <!-- Input Group: Fixed Fee -->
-                <div class="input-group">
-                    <label for="fixedFee" class="block text-sm font-medium text-gray-700">Fixed Per-Order Fee (\$)</label>
-                    <input type="number" id="fixedFee" value="0.30" min="0" step="0.01" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                </div>
-                
-                <hr class="my-6 border-indigo-200">
-                <h3 class="text-lg font-semibold text-green-600 mb-3">Top Rated Seller (TRS) Discount</h3>
+                                <div class="input-group">
+                    <label for="fixedFee" class="block text-sm font-medium text-gray-700">Fixed Per-Order Fee (\$)</label>
+                    <input type="number" id="fixedFee" value="0.30" min="0" step="0.01" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
+                
+                <hr class="my-6 border-indigo-200">
+                <h3 class="text-lg font-semibold text-green-600 mb-3">Top Rated Seller (TRS) Discount</h3>
 
-                <!-- Input Group: TRS Discount Enable -->
-                <div class="input-group flex items-center mt-3">
-                    <input type="checkbox" id="trsEnabled" checked onchange="calculateProfit()"
-                        class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                    <label for="trsEnabled" class="ml-2 block text-sm font-medium text-gray-700">Enable Top Rated Seller Fee Discount?</label>
-                </div>
+                                <div class="input-group flex items-center mt-3">
+                    <input type="checkbox" id="trsEnabled" checked onchange="calculateProfit()"
+                        class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                    <label for="trsEnabled" class="ml-2 block text-sm font-medium text-gray-700">Enable Top Rated Seller Fee Discount?</label>
+                </div>
 
-                <!-- Input Group: TRS Discount Rate -->
-                <div class="input-group">
-                    <label for="trsDiscountRate" class="block text-sm font-medium text-gray-700">TRS Discount Rate on Fees (%)</label>
-                    <input type="number" id="trsDiscountRate" value="10.00" min="0" max="100" step="0.01" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                    <p class="text-xs text-gray-500 mt-1">
-                        This discount is applied to the **Variable Final Value Fee Percentage** only.
-                    </p>
-                </div>
+                                <div class="input-group">
+                    <label for="trsDiscountRate" class="block text-sm font-medium text-gray-700">TRS Discount Rate on Fees (%)</label>
+                    <input type="number" id="trsDiscountRate" value="10.00" min="0" max="100" step="0.01" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                    <p class="text-xs text-gray-500 mt-1">
+                        This discount is applied to the **Variable Final Value Fee Percentage** only.
+                    </p>
+                </div>
 
-                <hr class="my-6 border-indigo-200">
-                
-                <!-- Input Group: Annual Fixed Costs -->
-                <div class="input-group">
-                    <label for="annualFixedCost" class="block text-sm font-medium text-gray-700">Annual Store/Fixed Costs (\$720)</label>
-                    <input type="number" id="annualFixedCost" value="720.00" min="0" step="0.01" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                </div>
+                <hr class="my-6 border-indigo-200">
+                
+                                <div class="input-group">
+                    <label for="annualFixedCost" class="block text-sm font-medium text-gray-700">Annual Store/Fixed Costs (\$720)</label>
+                    <input type="number" id="annualFixedCost" value="720.00" min="0" step="0.01" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
 
-                <!-- Input Group: Estimated Annual Sales -->
-                <div class="input-group">
-                    <label for="annualSalesEstimate" class="block text-sm font-medium text-gray-700">Estimated Annual Sales (\$14,000)</label>
-                    <input type="number" id="annualSalesEstimate" value="14000.00" min="1" step="0.01" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
-                </div>
+                                <div class="input-group">
+                    <label for="annualSalesEstimate" class="block text-sm font-medium text-gray-700">Estimated Annual Sales (\$14,000)</label>
+                    <input type="number" id="annualSalesEstimate" value="14000.00" min="1" step="0.01" oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                </div>
 
-            </div>
+            </div>
 
-            <!-- OUTPUTS COLUMN -->
-            <div class="lg:col-span-1">
-                <h2 class="text-xl font-bold text-indigo-600 mb-4 border-b pb-2">Order Summary</h2>
+                        <div class="lg:col-span-1">
+                <h2 class="text-xl font-bold text-indigo-600 mb-4 border-b pb-2">Order Summary</h2>
 
-                <div class="bg-indigo-50 p-5 rounded-xl shadow-inner space-y-4">
+                <div class="bg-indigo-50 p-5 rounded-xl shadow-inner space-y-4">
 
-                    <!-- Order Subtotal -->
-                    <div class="flex justify-between items-center py-2 border-b">
-                        <span class="text-sm font-medium text-gray-600">Total Item Price (Pre-Discount)</span>
-                        <span id="subtotal" class="text-lg font-semibold text-gray-800">$0.00</span>
-                    </div>
+                                        <div class="flex justify-between items-center py-2 border-b">
+                        <span class="text-sm font-medium text-gray-600">Total Item Price (Pre-Discount)</span>
+                        <span id="subtotal" class="text-lg font-semibold text-gray-800">$0.00</span>
+                    </div>
 
-                    <!-- Discount Applied -->
-                    <div class="flex justify-between items-center py-2 border-b">
-                        <span class="text-sm font-medium text-gray-600">Bulk Discount Applied</span>
-                        <span id="discountAmount" class="text-lg font-semibold text-red-600">-$0.00</span>
-                    </div>
-                    
-                    <div class="flex justify-between items-center py-2 border-b">
-                        <span class="text-sm font-medium text-gray-600">Discount Rate (%)</span>
-                        <span id="discountRateDisplay" class="text-lg font-semibold text-red-600">0.00%</span>
-                    </div>
+                                        <div class="flex justify-between items-center py-2 border-b">
+                        <span class="text-sm font-medium text-gray-600">Bulk Discount Applied</span>
+                        <span id="discountAmount" class="text-lg font-semibold text-red-600">-$0.00</span>
+                    </div>
+                    
+                    <div class="flex justify-between items-center py-2 border-b">
+                        <span class="text-sm font-medium text-gray-600">Discount Rate (%)</span>
+                        <span id="discountRateDisplay" class="text-lg font-semibold text-red-600">0.00%</span>
+                    </div>
 
-                    <!-- Calculated Metrics -->
-                    <div class="flex justify-between items-center py-2 border-b">
-                        <span class="text-sm font-medium text-gray-600">Total Sale Amount (A)</span>
-                        <span id="totalSale" class="text-xl font-bold text-indigo-800">$0.00</span>
-                    </div>
-                    
-                    <!-- TRS Fee Discount -->
-                    <div class="flex justify-between items-center py-2 border-b bg-green-50 p-2 rounded-lg">
-                        <span class="text-sm font-bold text-green-700">TRS Fee Discount</span>
-                        <span id="trsDiscountDisplay" class="text-lg font-semibold text-green-700">$0.00</span>
-                    </div>
+                                        <div class="flex justify-between items-center py-2 border-b">
+                        <span class="text-sm font-medium text-gray-600">Total Sale Amount (A)</span>
+                        <span id="totalSale" class="text-xl font-bold text-indigo-800">$0.00</span>
+                    </div>
+                    
+                                        <div class="flex justify-between items-center py-2 border-b bg-green-50 p-2 rounded-lg">
+                        <span class="text-sm font-bold text-green-700">TRS Fee Discount</span>
+                        <span id="trsDiscountDisplay" class="text-lg font-semibold text-green-700">$0.00</span>
+                    </div>
 
 
-                    <div class="flex justify-between items-center py-2 border-b">
-                        <span class="text-sm font-medium text-gray-600">Total COGS (Item Cost)</span>
-                        <span id="totalCogs" class="text-lg font-semibold text-red-600">-$0.00</span>
-                    </div>
+                    <div class="flex justify-between items-center py-2 border-b">
+                        <span class="text-sm font-medium text-gray-600">Total COGS (Item Cost)</span>
+                        <span id="totalCogs" class="text-lg font-semibold text-red-600">-$0.00</span>
+                    </div>
 
-                    <div class="flex justify-between items-center py-2 border-b">
-                        <span class="text-sm font-medium text-gray-600">Platform Fees (Variable + Fixed - TRS)</span>
-                        <span id="feeAmount" class="text-lg font-semibold text-red-600">-$0.00</span>
-                    </div>
-
-                    <div class="flex justify-between items-center py-2 border-b">
-                        <span class="text-sm font-medium text-gray-600">Allocated Overhead Cost</span>
-                        <span id="overheadAllocation" class="text-lg font-semibold text-red-600">-$0.00</span>
-                    </div>
-
-
-                    <div class="flex justify-between items-center pt-4 mt-4 border-t border-indigo-200">
-                        <span class="text-lg font-bold text-gray-800">NET PROFIT (Total Order)</span>
-                        <span id="netProfit" class="text-3xl font-extrabold text-green-700">$0.00</span>
-                    </div>
-                    
-                    <!-- NEW: Profit Per Card -->
-                    <div class="flex justify-between items-center pt-4">
-                        <span class="text-lg font-bold text-gray-800">NET PROFIT (Per Card)</span>
-                        <span id="profitPerCard" class="text-2xl font-extrabold text-green-700">$0.00</span>
-                    </div>
-
-                    <p id="profitMessage" class="text-xs mt-2 text-center text-gray-600"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Function to ensure a value is a valid number, defaulting to 0 if invalid
-        const safeParseFloat = (id) => {
-            const element = document.getElementById(id);
-            const value = +element.value;
-            return isNaN(value) ? 0 : value;
-        };
-
-        const formatCurrency = (amount, color = false) => {
-            const formatted = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }).format(Math.abs(amount));
-
-            if (color) {
-                // Determine color and sign
-                if (amount > 0) return `<span class="text-green-700">${formatted}</span>`;
-                if (amount < 0) return `<span class="text-red-600">-${formatted}</span>`;
-            }
-            return formatted;
-        };
-
-        function calculateProfit() {
-            // 1. Get Inputs
-            const quantity = safeParseFloat('quantity');
-            const singleCardPrice = safeParseFloat('itemPrice');
-            const singleCardCOGS = safeParseFloat('costOfGoods');
-
-            // Get Discount Rates from Inputs
-            const discount2Card = safeParseFloat('discount2Card') / 100;
-            const discount3Card = safeParseFloat('discount3Card') / 100;
-            const discount4Card = safeParseFloat('discount4Card') / 100;
-            const discount5PlusCard = safeParseFloat('discount5PlusCard') / 100;
-
-            // Per-Order Costs
-            const shippingCharged = safeParseFloat('shippingCharged');
-            const shippingCost = safeParseFloat('shippingCost');
-            const packagingCost = safeParseFloat('packagingCost');
-            const marketingCost = safeParseFloat('marketingCost');
-
-            // Fees & Overhead
-            const feePercent = safeParseFloat('feePercent');
-            const fixedFee = safeParseFloat('fixedFee');
-            const annualFixedCost = safeParseFloat('annualFixedCost');
-            const annualSalesEstimate = safeParseFloat('annualSalesEstimate');
-            
-            // New TRS Inputs
-            const trsEnabled = document.getElementById('trsEnabled').checked;
-            const trsDiscountRate = safeParseFloat('trsDiscountRate');
-            
-            // Guardrail for invalid quantity
-            if (quantity <= 0) {
-                // Reset outputs if quantity is zero or negative
-                document.querySelectorAll('.text-lg, .text-xl, .text-2xl, .text-3xl').forEach(el => el.textContent = '$0.00');
-                document.getElementById('subtotal').textContent = '$0.00';
-                document.getElementById('discountAmount').textContent = '-$0.00';
-                document.getElementById('discountRateDisplay').textContent = '0.00%';
-                document.getElementById('trsDiscountDisplay').textContent = '$0.00'; // Reset TRS discount
-                document.getElementById('profitMessage').textContent = 'Please enter a quantity greater than zero.';
-                return;
-            }
+                    <div class="flex justify-between items-center py-2 border-b">
+                        <span class="text-sm font-medium text-gray-600">Platform Fees (Variable + Fixed - TRS)</span>
+                        <span id="feeAmount" class="text-lg font-semibold text-red-600">-$0.00</span>
+                    </div>
+                    
+                                        <div class="flex justify-between items-center py-2 border-b">
+                        <span class="text-sm font-medium text-gray-600">Marketing Cost (${(safeParseFloat('marketingCostPercent') || 0).toFixed(2)}%)</span>
+                        <span id="marketingCostDisplay" class="text-lg font-semibold text-red-600">-$0.00</span>
+                    </div>
+                    
+                    <div class="flex justify-between items-center py-2 border-b">
+                        <span class="text-sm font-medium text-gray-600">Allocated Overhead Cost</span>
+                        <span id="overheadAllocation" class="text-lg font-semibold text-red-600">-$0.00</span>
+                    </div>
 
 
-            // 2. Apply Tiered Discount Logic using input values
-            const subtotal = singleCardPrice * quantity;
-            let discountRate = 0; // Stored as a decimal (e.g., 0.10 for 10%)
+                    <div class="flex justify-between items-center pt-4 mt-4 border-t border-indigo-200">
+                        <span class="text-lg font-bold text-gray-800">NET PROFIT (Total Order)</span>
+                        <span id="netProfit" class="text-3xl font-extrabold text-green-700">$0.00</span>
+                    </div>
+                    
+                                        <div class="flex justify-between items-center pt-4">
+                        <span class="text-lg font-bold text-gray-800">NET PROFIT (Per Card)</span>
+                        <span id="profitPerCard" class="text-2xl font-extrabold text-green-700">$0.00</span>
+                    </div>
 
-            if (quantity >= 5) {
-                // Tier 4: 5 or more cards = Custom Rate
-                discountRate = discount5PlusCard;
-            } else if (quantity === 4) {
-                // Tier 3: 4 cards = Custom Rate
-                discountRate = discount4Card;
-            } else if (quantity === 3) {
-                // Tier 2: 3 cards = Custom Rate
-                discountRate = discount3Card;
-            } else if (quantity === 2) {
-                // Tier 1: 2 cards = Custom Rate
-                discountRate = discount2Card;
-            } 
-            // Quantity 1 defaults to 0% discount (discountRate=0)
+                    <p id="profitMessage" class="text-xs mt-2 text-center text-gray-600"></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            // Calculate multiplier (e.g., if rate is 0.10, multiplier is 0.90)
-            const discountMultiplier = 1.0 - discountRate;
+    <script>
+        // Function to ensure a value is a valid number, defaulting to 0 if invalid
+        const safeParseFloat = (id) => {
+            const element = document.getElementById(id);
+            const value = +element.value;
+            return isNaN(value) ? 0 : value;
+        };
 
-            // Discount only applies to the cards, not the shipping charged
-            const itemPriceAfterDiscount = subtotal * discountMultiplier;
-            const discountAmount = subtotal * discountRate;
+        const formatCurrency = (amount, color = false) => {
+            const formatted = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(Math.abs(amount));
 
-            // 3. Calculate Total Sale Amount (A)
-            const totalSale = itemPriceAfterDiscount + shippingCharged; // This is the total revenue received
+            if (color) {
+                // Determine color and sign
+                if (amount > 0) return `<span class="text-green-700">${formatted}</span>`;
+                if (amount < 0) return `<span class="text-red-600">-${formatted}</span>`;
+            }
+            return formatted;
+        };
 
-            // 4. Calculate Platform Fees with TRS Discount
-            const variableFee = totalSale * (feePercent / 100);
-            let trsDiscount = 0;
+        function calculateProfit() {
+            // 1. Get Inputs
+            const quantity = safeParseFloat('quantity');
+            const singleCardPrice = safeParseFloat('itemPrice');
+            const singleCardCOGS = safeParseFloat('costOfGoods');
 
-            if (trsEnabled) {
-                // Apply TRS discount to the variable fee portion
-                trsDiscount = variableFee * (trsDiscountRate / 100);
-            }
-            
-            // Total Platform Fees (Variable + Fixed - TRS Discount)
-            const feeAmount = (variableFee + fixedFee) - trsDiscount;
+            // Get Discount Rates from Inputs
+            const discount2Card = safeParseFloat('discount2Card') / 100;
+            const discount3Card = safeParseFloat('discount3Card') / 100;
+            const discount4Card = safeParseFloat('discount4Card') / 100;
+            const discount5PlusCard = safeParseFloat('discount5PlusCard') / 100;
 
-            // 5. Calculate Total Costs (C)
-            const totalCOGS = singleCardCOGS * quantity; // COGS is multiplied by quantity
+            // Per-Order Costs
+            const shippingCharged = safeParseFloat('shippingCharged');
+            const shippingCost = safeParseFloat('shippingCost');
+            const packagingCost = safeParseFloat('packagingCost');
+            // MARKETING COST INPUT CHANGED TO PERCENTAGE
+            const marketingCostPercent = safeParseFloat('marketingCostPercent'); 
 
-            // Calculate Overhead Allocation (Based on total revenue)
-            let overheadAllocation = 0;
-            if (annualSalesEstimate > 0) {
-                const overheadRate = (annualFixedCost / annualSalesEstimate);
-                overheadAllocation = totalSale * overheadRate;
-            }
-
-            // All operational costs (COGS is total, others are per-order)
-            const totalOperationalCosts = totalCOGS + shippingCost + packagingCost + marketingCost + overheadAllocation;
-
-
-            // 6. Calculate Net Profit (Total Order)
-            const netProfit = totalSale - feeAmount - totalOperationalCosts;
-
-            // 7. Calculate Net Profit Per Card
-            const profitPerCard = netProfit / quantity;
-
-            // 8. Update the UI
-            document.getElementById('subtotal').textContent = formatCurrency(subtotal);
-            document.getElementById('discountAmount').textContent = formatCurrency(-discountAmount); // Display as negative
-            document.getElementById('discountRateDisplay').textContent = `${(discountRate * 100).toFixed(2)}%`;
-            document.getElementById('trsDiscountDisplay').textContent = formatCurrency(trsDiscount); // NEW TRS DISPLAY
-
-            document.getElementById('totalSale').textContent = formatCurrency(totalSale);
-            document.getElementById('totalCogs').textContent = formatCurrency(-totalCOGS);
-            document.getElementById('feeAmount').textContent = formatCurrency(-feeAmount);
-            document.getElementById('overheadAllocation').textContent = formatCurrency(-overheadAllocation);
-            
-            // Total Profit (Order)
-            const netProfitElement = document.getElementById('netProfit');
-            netProfitElement.innerHTML = formatCurrency(netProfit, true);
-            netProfitElement.className = netProfit >= 0
-                ? 'text-3xl font-extrabold text-green-700'
-                : 'text-3xl font-extrabold text-red-600';
-
-            // Profit Per Card
-            const profitPerCardElement = document.getElementById('profitPerCard');
-            profitPerCardElement.innerHTML = formatCurrency(profitPerCard, true);
-            profitPerCardElement.className = profitPerCard >= 0
-                ? 'text-2xl font-extrabold text-green-700'
-                : 'text-2xl font-extrabold text-red-600';
+            // Fees & Overhead
+            const feePercent = safeParseFloat('feePercent');
+            const fixedFee = safeParseFloat('fixedFee');
+            const annualFixedCost = safeParseFloat('annualFixedCost');
+            const annualSalesEstimate = safeParseFloat('annualSalesEstimate');
+            
+            // New TRS Inputs
+            const trsEnabled = document.getElementById('trsEnabled').checked;
+            const trsDiscountRate = safeParseFloat('trsDiscountRate');
+            
+            // Guardrail for invalid quantity
+            if (quantity <= 0) {
+                // Reset outputs if quantity is zero or negative
+                document.querySelectorAll('.text-lg, .text-xl, .text-2xl, .text-3xl').forEach(el => el.textContent = '$0.00');
+                document.getElementById('subtotal').textContent = '$0.00';
+                document.getElementById('discountAmount').textContent = '-$0.00';
+                document.getElementById('discountRateDisplay').textContent = '0.00%';
+                document.getElementById('trsDiscountDisplay').textContent = '$0.00'; // Reset TRS discount
+                document.getElementById('marketingCostDisplay').textContent = '-$0.00'; // Reset Marketing Cost display
+                document.getElementById('profitMessage').textContent = 'Please enter a quantity greater than zero.';
+                return;
+            }
 
 
-            // Update profit message
-            const profitMessage = document.getElementById('profitMessage');
-            if (netProfit > 0) {
-                profitMessage.textContent = 'Profitability achieved. You are covering all costs for this order.';
-            } else if (netProfit < 0) {
-                profitMessage.textContent = 'Warning: This order is currently losing money after accounting for all costs and the bulk discount.';
-            } else {
-                profitMessage.textContent = 'This order has reached the break-even point.';
-            }
-        }
+            // 2. Apply Tiered Discount Logic using input values
+            const subtotal = singleCardPrice * quantity;
+            let discountRate = 0; // Stored as a decimal (e.g., 0.10 for 10%)
 
-        // Run calculation on load with default values
-        document.addEventListener('DOMContentLoaded', calculateProfit);
-    </script>
+            if (quantity >= 5) {
+                // Tier 4: 5 or more cards = Custom Rate
+                discountRate = discount5PlusCard;
+            } else if (quantity === 4) {
+                // Tier 3: 4 cards = Custom Rate
+                discountRate = discount4Card;
+            } else if (quantity === 3) {
+                // Tier 2: 3 cards = Custom Rate
+                discountRate = discount3Card;
+            } else if (quantity === 2) {
+                // Tier 1: 2 cards = Custom Rate
+                discountRate = discount2Card;
+            } 
+            // Quantity 1 defaults to 0% discount (discountRate=0)
+
+            // Calculate multiplier (e.g., if rate is 0.10, multiplier is 0.90)
+            const discountMultiplier = 1.0 - discountRate;
+
+            // Discount only applies to the cards, not the shipping charged
+            const itemPriceAfterDiscount = subtotal * discountMultiplier;
+            const discountAmount = subtotal * discountRate;
+
+            // 3. Calculate Total Sale Amount (A)
+            const totalSale = itemPriceAfterDiscount + shippingCharged; // This is the total revenue received
+
+            // 4. Calculate Platform Fees with TRS Discount
+            const variableFee = totalSale * (feePercent / 100);
+            let trsDiscount = 0;
+
+            if (trsEnabled) {
+                // Apply TRS discount to the variable fee portion
+                trsDiscount = variableFee * (trsDiscountRate / 100);
+            }
+            
+            // Total Platform Fees (Variable + Fixed - TRS Discount)
+            const feeAmount = (variableFee + fixedFee) - trsDiscount;
+
+            // 5. Calculate Total Costs (C)
+            const totalCOGS = singleCardCOGS * quantity; // COGS is multiplied by quantity
+
+            // CALCULATE MARKETING COST DOLLAR AMOUNT (NEW STEP)
+            const marketingCostAmount = totalSale * (marketingCostPercent / 100);
+
+            // Calculate Overhead Allocation (Based on total revenue)
+            let overheadAllocation = 0;
+            if (annualSalesEstimate > 0) {
+                const overheadRate = (annualFixedCost / annualSalesEstimate);
+                overheadAllocation = totalSale * overheadRate;
+            }
+
+            // All operational costs (marketingCostAmount replaces the fixed marketingCost input)
+            const totalOperationalCosts = totalCOGS + shippingCost + packagingCost + marketingCostAmount + overheadAllocation;
+
+
+            // 6. Calculate Net Profit (Total Order)
+            const netProfit = totalSale - feeAmount - totalOperationalCosts;
+
+            // 7. Calculate Net Profit Per Card
+            const profitPerCard = netProfit / quantity;
+
+            // 8. Update the UI
+            document.getElementById('subtotal').textContent = formatCurrency(subtotal);
+            document.getElementById('discountAmount').textContent = formatCurrency(-discountAmount); // Display as negative
+            document.getElementById('discountRateDisplay').textContent = `${(discountRate * 100).toFixed(2)}%`;
+            document.getElementById('trsDiscountDisplay').textContent = formatCurrency(trsDiscount); // TRS DISPLAY
+
+            document.getElementById('totalSale').textContent = formatCurrency(totalSale);
+            document.getElementById('totalCogs').textContent = formatCurrency(-totalCOGS);
+            document.getElementById('feeAmount').textContent = formatCurrency(-feeAmount);
+            document.getElementById('overheadAllocation').textContent = formatCurrency(-overheadAllocation);
+            // Display the calculated marketing cost amount
+            document.getElementById('marketingCostDisplay').textContent = formatCurrency(-marketingCostAmount);
+            
+            // Total Profit (Order)
+            const netProfitElement = document.getElementById('netProfit');
+            netProfitElement.innerHTML = formatCurrency(netProfit, true);
+            netProfitElement.className = netProfit >= 0
+                ? 'text-3xl font-extrabold text-green-700'
+                : 'text-3xl font-extrabold text-red-600';
+
+            // Profit Per Card
+            const profitPerCardElement = document.getElementById('profitPerCard');
+            profitPerCardElement.innerHTML = formatCurrency(profitPerCard, true);
+            profitPerCardElement.className = profitPerCard >= 0
+                ? 'text-2xl font-extrabold text-green-700'
+                : 'text-2xl font-extrabold text-red-600';
+
+
+            // Update profit message
+            const profitMessage = document.getElementById('profitMessage');
+            if (netProfit > 0) {
+                profitMessage.textContent = 'Profitability achieved. You are covering all costs for this order.';
+            } else if (netProfit < 0) {
+                profitMessage.textContent = 'Warning: This order is currently losing money after accounting for all costs and the bulk discount.';
+            } else {
+                profitMessage.textContent = 'This order has reached the break-even point.';
+            }
+        }
+
+        // Run calculation on load with default values
+        document.addEventListener('DOMContentLoaded', calculateProfit);
+    </script>
 </body>
 </html>
