@@ -118,9 +118,17 @@
                 
                 <!-- Input Group: Marketing Cost -->
                 <div class="input-group">
-                    <label for="marketingCost" class="block text-sm font-medium text-gray-700">Per-Order Marketing/Ad Cost (CPA) (\$)</label>
-                    <input type="number" id="marketingCost" value="1.50" min="0" step="0.01" oninput="calculateProfit()"
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                    <label for="marketingCost" class="block text-sm font-medium text-gray-700">Per-Order Marketing/Ad Cost (CPA) (%)</label>
+    
+                    <input 
+                        type="number" 
+                        id="marketingCost" 
+                        value="2.00" 
+                        min="0" 
+                        step="0.1" 
+                        oninput="calculateProfit()"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                    >
                 </div>
 
                 <hr class="my-6 border-indigo-200">
@@ -285,11 +293,17 @@
             const discount4Card = safeParseFloat('discount4Card') / 100;
             const discount5PlusCard = safeParseFloat('discount5PlusCard') / 100;
 
-            // Per-Order Costs
+           // Per-Order Costs
             const shippingCharged = safeParseFloat('shippingCharged');
             const shippingCost = safeParseFloat('shippingCost');
             const packagingCost = safeParseFloat('packagingCost');
-            const marketingCost = safeParseFloat('marketingCost');
+
+            // NEW LOGIC FOR MARKETING COST AS PERCENTAGE
+            // This variable now holds the percentage value (e.g., 2.00)
+            const marketingCostPercentInput = safeParseFloat('marketingCost');
+
+            // The rest of the calculation that uses this value needs to be updated further down in the function.
+            // e.g., marketingCostAmount = totalSale * (marketingCostPercentInput / 100);
 
             // Fees & Overhead
             const feePercent = safeParseFloat('feePercent');
